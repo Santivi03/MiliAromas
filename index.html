@@ -1,0 +1,1364 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Mili Aromas · Difusores y perfumes ambientales</title>
+    <meta name="description" content="Difusores ambientales, perfume en spray y difusor para auto en varios aromas. Armá tu pedido y confirmalo por WhatsApp.">
+    <meta name="theme-color" content="#F5F0E9">
+
+    <!-- Vista previa al compartir el link. Cuando haya dominio, cambiar og:image por la URL absoluta. -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Mili Aromas">
+    <meta property="og:description" content="Difusores y perfumes ambientales. Armá tu pedido y confirmalo por WhatsApp.">
+    <meta property="og:image" content="images/difusor_200.jpg">
+    <meta property="og:locale" content="es_AR">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23F5F0E9'/%3E%3Crect x='10' y='10' width='44' height='44' fill='none' stroke='%231D1A17' stroke-width='2'/%3E%3Ctext x='32' y='43' text-anchor='middle' font-family='Georgia,serif' font-size='30' fill='%231D1A17'%3EM%3C/text%3E%3C/svg%3E">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400..600&family=Hanken+Grotesk:wght@400;500;600&display=swap">
+
+    <style>
+        :root {
+            --ink: #1D1A17;
+            --ink-soft: #5B534B;
+            --clay: #8A5F45;
+            --paper: #F5F0E9;
+            --surface: #FBF9F5;
+            --paper-dark: #ECE5DB;
+            --line: #D6CABB;
+            --wa: #17784A;
+            --wa-hover: #10633C;
+            --danger: #A23B2A;
+
+            --serif: 'Bodoni Moda', 'Didot', Georgia, serif;
+            --sans: 'Hanken Grotesk', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+            --r-sm: 6px;
+            --r-md: 12px;
+            --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+            --gutter: 20px;
+            --bar-h: 0px;
+        }
+
+        *, *::before, *::after { box-sizing: border-box; }
+        * { margin: 0; }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 88px;
+            -webkit-text-size-adjust: 100%;
+            scrollbar-color: var(--line) var(--paper);
+        }
+
+        body {
+            background: var(--paper);
+            color: var(--ink);
+            font-family: var(--sans);
+            font-size: 16px;
+            line-height: 1.6;
+            padding-bottom: var(--bar-h);
+            -webkit-font-smoothing: antialiased;
+            -webkit-tap-highlight-color: transparent;
+            caret-color: var(--clay);
+            accent-color: var(--ink);
+        }
+
+        ::selection { background: var(--clay); color: #fff; }
+
+        /* Bodoni Moda afina los trazos finos a tamaños grandes hasta casi borrarlos
+           (la diagonal de la "A"). Fijamos un tamaño óptico bajo para que tengan cuerpo. */
+        .wordmark, h1, h2, .product-name, .step-num, .total-row strong,
+        .empty p, .customer h3, .placeholder-inner b {
+            font-optical-sizing: none;
+            font-variation-settings: "opsz" 14;
+        }
+
+        img { display: block; max-width: 100%; }
+        button, input, select, textarea { font: inherit; color: inherit; }
+        button { cursor: pointer; background: none; border: 0; }
+        a { color: inherit; text-underline-offset: 3px; }
+
+        :focus-visible {
+            outline: 2px solid var(--ink);
+            outline-offset: 3px;
+            border-radius: 2px;
+        }
+
+        .icon {
+            width: 20px;
+            height: 20px;
+            flex: none;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 1.6;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+        .icon-fill { fill: currentColor; stroke: none; }
+
+        .sr-only {
+            position: absolute;
+            width: 1px; height: 1px;
+            padding: 0; margin: -1px;
+            overflow: hidden;
+            clip: rect(0 0 0 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 0 var(--gutter);
+        }
+
+        /* Botones */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            min-height: 48px;
+            padding: 12px 22px;
+            border-radius: var(--r-sm);
+            font-weight: 600;
+            font-size: 15px;
+            letter-spacing: 0.01em;
+            text-decoration: none;
+            transition: background-color .2s, color .2s, border-color .2s, transform .2s var(--ease-out);
+            user-select: none;
+            -webkit-user-select: none;
+        }
+        .btn:active { transform: scale(0.98); }
+        .btn-primary { background: var(--ink); color: var(--surface); }
+        .btn-primary:hover { background: #3A332C; }
+        .btn-ghost { border: 1px solid var(--ink); color: var(--ink); }
+        .btn-ghost:hover { background: var(--ink); color: var(--surface); }
+        .btn-wa { background: var(--wa); color: #fff; width: 100%; min-height: 54px; font-size: 16px; }
+        .btn-wa:hover { background: var(--wa-hover); }
+        .btn[disabled], .btn[aria-disabled="true"] {
+            background: var(--paper-dark);
+            color: var(--ink-soft);
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .icon-btn {
+            display: inline-grid;
+            place-items: center;
+            width: 44px;
+            height: 44px;
+            border-radius: var(--r-sm);
+            color: var(--ink);
+            transition: background-color .2s;
+        }
+        .icon-btn:hover { background: var(--paper-dark); }
+
+        /* Header */
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: color-mix(in srgb, var(--paper) 92%, transparent);
+            backdrop-filter: saturate(1.2) blur(10px);
+            -webkit-backdrop-filter: saturate(1.2) blur(10px);
+            border-bottom: 1px solid var(--line);
+        }
+        .header-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 64px;
+            gap: 16px;
+        }
+        .wordmark {
+            font-family: var(--serif);
+            font-size: 20px;
+            font-weight: 500;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+        .nav { display: flex; align-items: center; gap: 8px; }
+        .nav-link {
+            display: none;
+            padding: 10px 12px;
+            font-size: 15px;
+            font-weight: 500;
+            text-decoration: none;
+            color: var(--ink-soft);
+            transition: color .2s;
+        }
+        .nav-link:hover { color: var(--ink); }
+        .cart-btn { position: relative; }
+        .cart-btn .icon { width: 24px; height: 24px; }
+        .cart-badge {
+            position: absolute;
+            top: 4px;
+            right: 2px;
+            min-width: 20px;
+            height: 20px;
+            padding: 0 5px;
+            border-radius: 999px;
+            background: var(--clay);
+            color: #fff;
+            font-size: 12px;
+            font-weight: 600;
+            line-height: 20px;
+            text-align: center;
+            font-variant-numeric: tabular-nums;
+        }
+        .cart-badge[hidden] { display: none; }
+        .cart-badge.bump { animation: bump .45s var(--ease-out); }
+        @keyframes bump { 0% { transform: scale(1); } 35% { transform: scale(1.35); } 100% { transform: scale(1); } }
+
+        /* Hero */
+        .hero { padding: 40px 0 56px; }
+        .hero-grid { display: grid; gap: 40px; align-items: center; }
+        .hero h1 {
+            font-family: var(--serif);
+            font-weight: 500;
+            font-size: clamp(44px, 11vw, 88px);
+            line-height: 1;
+            letter-spacing: -0.02em;
+            text-wrap: balance;
+        }
+        .hero-copy p {
+            margin-top: 20px;
+            max-width: 44ch;
+            font-size: 18px;
+            color: var(--ink-soft);
+        }
+        .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+
+        .hero-media {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            align-items: start;
+        }
+        .frame {
+            background: var(--surface);
+            border: 1px solid var(--ink);
+            padding: 8px;
+        }
+        .frame img {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 4 / 5;
+            object-fit: cover;
+            object-position: 50% 58%;
+        }
+        .frame figcaption {
+            display: flex;
+            justify-content: space-between;
+            gap: 8px;
+            padding: 10px 2px 2px;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+        .frame figcaption span:last-child { color: var(--ink-soft); }
+        .hero-media .frame:nth-child(2) { margin-top: 48px; }
+
+        /* Secciones */
+        .section { padding: 64px 0; }
+        .section-alt { background: var(--paper-dark); }
+        .section-head { margin-bottom: 32px; max-width: 60ch; }
+        .section-head h2 {
+            font-family: var(--serif);
+            font-weight: 500;
+            font-size: clamp(32px, 6vw, 48px);
+            line-height: 1.08;
+            letter-spacing: -0.015em;
+            text-wrap: balance;
+        }
+        .section-head p { margin-top: 12px; color: var(--ink-soft); }
+
+        /* Cómo comprar */
+        .steps { list-style: none; padding: 0; display: grid; gap: 0; }
+        .step {
+            display: grid;
+            grid-template-columns: 56px 1fr;
+            gap: 8px 16px;
+            padding: 24px 0;
+            border-top: 1px solid var(--ink);
+        }
+        .step-num {
+            font-family: var(--serif);
+            font-size: 40px;
+            line-height: 1;
+            color: var(--clay);
+        }
+        .step h3 { font-size: 18px; font-weight: 600; line-height: 1.35; }
+        .step p { color: var(--ink-soft); margin-top: 4px; max-width: 40ch; }
+        .store-info {
+            margin-top: 8px;
+            padding-top: 20px;
+            border-top: 1px solid var(--line);
+            display: grid;
+            gap: 6px;
+            color: var(--ink-soft);
+        }
+        .store-info strong { color: var(--ink); font-weight: 600; }
+        .store-info[hidden] { display: none; }
+
+        /* Productos */
+        .products { display: grid; gap: 24px; }
+        .product {
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: var(--r-md);
+            overflow: hidden;
+            display: grid;
+        }
+        .product-media { position: relative; background: var(--paper-dark); }
+        .product-media img {
+            width: 100%;
+            height: 100%;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            object-position: 50% 62%;
+        }
+        .placeholder {
+            aspect-ratio: 1 / 1;
+            height: 100%;
+            display: grid;
+            place-items: center;
+            padding: 24px;
+            background: var(--paper-dark);
+        }
+        .placeholder-label {
+            width: 150px;
+            height: 240px;
+            border: 1px solid var(--ink);
+            background: var(--surface);
+            padding: 8px;
+            display: grid;
+        }
+        .placeholder-inner {
+            min-height: 0;
+            overflow: hidden;
+            border: 1px solid var(--ink);
+            display: grid;
+            grid-template-rows: 1fr auto;
+            justify-items: center;
+            padding: 10px 6px;
+        }
+        .placeholder-inner b {
+            writing-mode: vertical-rl;
+            transform: rotate(180deg);
+            font-family: var(--serif);
+            font-weight: 500;
+            font-size: 15px;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+        .placeholder-inner span {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            text-align: center;
+            line-height: 1.3;
+            color: var(--ink-soft);
+        }
+
+        .product-body { padding: 24px; display: flex; flex-direction: column; gap: 20px; }
+        .product-top { display: grid; gap: 6px; }
+        .product-name {
+            font-family: var(--serif);
+            font-weight: 500;
+            font-size: 26px;
+            line-height: 1.15;
+            letter-spacing: -0.01em;
+        }
+        .price {
+            color: var(--clay);
+            font-weight: 600;
+            font-size: 18px;
+            font-variant-numeric: tabular-nums;
+            white-space: nowrap;
+        }
+        .product-note { color: var(--ink-soft); font-size: 14px; margin-top: -12px; }
+
+        .aromas { border: 0; padding: 0; min-width: 0; }
+        .aromas legend,
+        .field label,
+        .qty-label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+        .aromas legend span { font-weight: 500; letter-spacing: 0.02em; text-transform: none; color: var(--ink-soft); }
+        .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+        .chip { position: relative; }
+        .chip input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+        .chip span {
+            display: inline-flex;
+            align-items: center;
+            min-height: 44px;
+            padding: 8px 16px;
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            background: var(--surface);
+            font-size: 15px;
+            line-height: 1.2;
+            transition: background-color .15s, border-color .15s, color .15s;
+        }
+        .chip:hover span { border-color: var(--ink); }
+        .chip input:checked + span { background: var(--ink); border-color: var(--ink); color: var(--surface); }
+        .chip input:focus-visible + span { outline: 2px solid var(--ink); outline-offset: 3px; }
+        .aromas.has-error .chip span { border-color: var(--danger); }
+
+        .field-error {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 10px;
+            color: var(--danger);
+            font-size: 14px;
+            font-weight: 500;
+        }
+        .field-error[hidden] { display: none; }
+        .field-error .icon { width: 16px; height: 16px; }
+
+        .buy-row { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 12px; margin-top: auto; }
+        .buy-row .btn { flex: 1 1 180px; }
+
+        .stepper {
+            display: inline-flex;
+            align-items: center;
+            border: 1px solid var(--line);
+            border-radius: var(--r-sm);
+            background: var(--surface);
+        }
+        .stepper button {
+            display: grid;
+            place-items: center;
+            width: 44px;
+            height: 46px;
+            color: var(--ink);
+            transition: background-color .15s;
+        }
+        .stepper button:hover:not(:disabled) { background: var(--paper-dark); }
+        .stepper button:disabled { color: var(--line); cursor: not-allowed; }
+        .stepper .icon { width: 16px; height: 16px; }
+        .stepper output {
+            min-width: 32px;
+            text-align: center;
+            font-weight: 600;
+            font-variant-numeric: tabular-nums;
+        }
+        .stepper.sm button { width: 44px; height: 40px; }
+
+        .add-btn.added { background: var(--clay); }
+
+        /* Contacto */
+        .contact-grid { display: grid; gap: 24px; align-items: end; }
+        .contact-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+
+        /* Footer */
+        .site-footer {
+            padding: 40px 0 48px;
+            border-top: 1px solid var(--line);
+            color: var(--ink-soft);
+            font-size: 14px;
+        }
+        .footer-row { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 24px; }
+        .site-footer a { color: var(--ink); }
+
+        /* Barra de pedido */
+        .orderbar {
+            position: fixed;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 60;
+            padding: 12px var(--gutter) calc(12px + env(safe-area-inset-bottom));
+            background: var(--paper);
+            border-top: 1px solid var(--line);
+            box-shadow: 0 -6px 24px rgba(29, 26, 23, 0.08);
+            transform: translateY(110%);
+            visibility: hidden;
+            transition: transform .45s var(--ease-out), visibility 0s .45s;
+        }
+        .orderbar.show {
+            transform: none;
+            visibility: visible;
+            transition: transform .45s var(--ease-out);
+        }
+        .orderbar-btn {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            width: 100%;
+            max-width: 1140px;
+            margin: 0 auto;
+            min-height: 52px;
+            padding: 8px 8px 8px 18px;
+            border-radius: var(--r-sm);
+            background: var(--ink);
+            color: var(--surface);
+            text-align: left;
+        }
+        .orderbar-sum { flex: 1; display: grid; line-height: 1.25; }
+        .orderbar-sum small { font-size: 13px; opacity: .8; }
+        .orderbar-sum strong { font-size: 17px; font-variant-numeric: tabular-nums; }
+        .orderbar-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 14px;
+            border-radius: 4px;
+            background: var(--surface);
+            color: var(--ink);
+            font-weight: 600;
+            font-size: 15px;
+        }
+
+        /* Panel del pedido */
+        .scrim {
+            position: fixed;
+            inset: 0;
+            z-index: 90;
+            background: rgba(29, 26, 23, 0.4);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity .3s, visibility 0s .3s;
+        }
+        .scrim.open { opacity: 1; visibility: visible; transition: opacity .3s; }
+
+        .drawer {
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 100;
+            width: min(100%, 460px);
+            display: flex;
+            flex-direction: column;
+            background: var(--paper);
+            box-shadow: -12px 0 40px rgba(29, 26, 23, 0.16);
+            transform: translateX(100%);
+            visibility: hidden;
+            transition: transform .45s var(--ease-out), visibility 0s .45s;
+        }
+        .drawer.open { transform: none; visibility: visible; transition: transform .45s var(--ease-out); }
+
+        .drawer-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 12px 12px 24px;
+            border-bottom: 1px solid var(--line);
+        }
+        .drawer-head h2 { font-family: var(--serif); font-weight: 500; font-size: 28px; }
+        .drawer-form { flex: 1; min-height: 0; display: flex; flex-direction: column; }
+        .drawer-scroll { flex: 1; overflow-y: auto; overscroll-behavior: contain; padding: 8px 24px 24px; }
+
+        .lines { list-style: none; padding: 0; }
+        .line {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 10px 12px;
+            padding: 18px 0;
+            border-bottom: 1px solid var(--line);
+        }
+        .line-name { font-weight: 600; line-height: 1.35; }
+        .line-meta { color: var(--ink-soft); font-size: 14px; }
+        .line-total { font-weight: 600; font-variant-numeric: tabular-nums; text-align: right; }
+        .line-actions { grid-column: 1 / -1; display: flex; align-items: center; justify-content: space-between; }
+        .remove-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            min-height: 44px;
+            padding: 0 10px;
+            border-radius: var(--r-sm);
+            color: var(--ink-soft);
+            font-size: 14px;
+            font-weight: 500;
+            transition: color .15s, background-color .15s;
+        }
+        .remove-btn:hover { color: var(--danger); background: var(--paper-dark); }
+        .remove-btn .icon { width: 18px; height: 18px; }
+
+        .empty { padding: 48px 0 24px; text-align: center; }
+        .empty[hidden] { display: none; }
+        .empty p { font-family: var(--serif); font-size: 24px; line-height: 1.25; }
+        .empty span { display: block; margin: 8px 0 24px; color: var(--ink-soft); }
+
+        .customer { margin-top: 28px; display: grid; gap: 18px; }
+        .customer[hidden] { display: none; }
+        .customer h3 { font-family: var(--serif); font-weight: 500; font-size: 22px; }
+        .field label { margin-bottom: 8px; }
+        .field label .opt { font-weight: 500; letter-spacing: 0.02em; text-transform: none; color: var(--ink-soft); }
+        .field input,
+        .field select,
+        .field textarea {
+            width: 100%;
+            min-height: 48px;
+            padding: 11px 14px;
+            border: 1px solid var(--line);
+            border-radius: var(--r-sm);
+            background: var(--surface);
+            font-size: 16px;
+            transition: border-color .15s;
+        }
+        .field textarea { resize: vertical; min-height: 76px; }
+        .field input:hover, .field select:hover, .field textarea:hover { border-color: var(--ink-soft); }
+        .field input:focus-visible, .field select:focus-visible, .field textarea:focus-visible {
+            outline: 2px solid var(--ink);
+            outline-offset: 0;
+            border-color: var(--ink);
+        }
+        .field input::placeholder, .field textarea::placeholder { color: #7A7067; }
+        .field input[aria-invalid="true"] { border-color: var(--danger); }
+        .field[hidden] { display: none; }
+
+        .drawer-foot {
+            padding: 16px 24px calc(16px + env(safe-area-inset-bottom));
+            border-top: 1px solid var(--line);
+            background: var(--paper);
+        }
+        .total-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 14px;
+        }
+        .total-row span { font-weight: 500; }
+        .total-row strong {
+            font-family: var(--serif);
+            font-size: 30px;
+            font-weight: 500;
+            font-variant-numeric: tabular-nums;
+        }
+        .foot-note { margin-top: 12px; font-size: 13px; line-height: 1.5; color: var(--ink-soft); text-align: center; }
+        .foot-note a { color: var(--ink); font-weight: 600; }
+        .foot-links { display: flex; justify-content: center; margin-top: 4px; }
+        .link-btn {
+            min-height: 44px;
+            padding: 0 12px;
+            font-size: 14px;
+            color: var(--ink-soft);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+        .link-btn:hover { color: var(--danger); }
+        .link-btn[hidden] { display: none; }
+
+        /* Tablet y escritorio */
+        @media (min-width: 640px) {
+            :root { --gutter: 32px; }
+            .nav-link { display: inline-block; }
+            .steps { grid-template-columns: repeat(3, 1fr); gap: 32px; }
+            .step { grid-template-columns: 1fr; padding-top: 20px; }
+            .step-num { font-size: 48px; margin-bottom: 8px; }
+            .contact-grid { grid-template-columns: 1fr auto; }
+        }
+
+        @media (min-width: 760px) {
+            .product { grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr); }
+            .product-media img, .placeholder { aspect-ratio: auto; min-height: 100%; position: absolute; inset: 0; }
+            .placeholder { position: absolute; }
+            .product-media { min-height: 420px; }
+        }
+
+        @media (min-width: 960px) {
+            .hero { padding: 72px 0 96px; }
+            .hero-grid { grid-template-columns: 1.15fr 0.85fr; gap: 64px; }
+            .hero-media { width: 100%; max-width: 480px; justify-self: end; }
+            .section { padding: 96px 0; }
+            .orderbar {
+                left: auto;
+                right: 24px;
+                bottom: 24px;
+                width: 420px;
+                padding: 0;
+                border: 0;
+                background: transparent;
+                box-shadow: none;
+            }
+            .orderbar-btn { box-shadow: 0 12px 32px rgba(29, 26, 23, 0.22); }
+        }
+
+        @media (min-width: 1100px) {
+            .products { grid-template-columns: 1fr 1fr; }
+            .product { grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); }
+            .product-media { min-height: 460px; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                transition-delay: 0s !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Íconos SVG reutilizables -->
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+        <symbol id="i-bag" viewBox="0 0 24 24"><path d="M5.5 8h13l-1 12.5h-11L5.5 8Z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/></symbol>
+        <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+        <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+        <symbol id="i-minus" viewBox="0 0 24 24"><path d="M5 12h14"/></symbol>
+        <symbol id="i-trash" viewBox="0 0 24 24"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/></symbol>
+        <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
+        <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+        <symbol id="i-alert" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7.5v5.5M12 16.5v.01"/></symbol>
+        <symbol id="i-ig" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5v.01"/></symbol>
+        <symbol id="i-wa" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></symbol>
+    </svg>
+
+    <div id="page">
+        <header class="site-header">
+            <div class="container header-row">
+                <a href="#" class="wordmark" aria-label="Mili Aromas, inicio">Mili Aromas.</a>
+                <nav class="nav" aria-label="Principal">
+                    <a class="nav-link" href="#productos">Productos</a>
+                    <a class="nav-link" href="#como-comprar">Cómo comprar</a>
+                    <button class="icon-btn cart-btn" type="button" id="cartBtn" aria-haspopup="dialog" aria-controls="drawer">
+                        <svg class="icon" aria-hidden="true"><use href="#i-bag"/></svg>
+                        <span class="sr-only" id="cartBtnLabel">Ver pedido</span>
+                        <span class="cart-badge" id="cartBadge" aria-hidden="true" hidden>0</span>
+                    </button>
+                </nav>
+            </div>
+        </header>
+
+        <main>
+            <section class="hero">
+                <div class="container hero-grid">
+                    <div class="hero-copy">
+                        <h1>Amor en aromas</h1>
+                        <p>Encontrá tu fragancia favorita para ambientar todos tus espacios. Venta de difusores y perfumes ambientales.</p>
+                        <div class="hero-actions">
+                            <a class="btn btn-primary" href="#productos">
+                                Ver productos
+                                <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
+                            </a>
+                            <a class="btn btn-ghost" href="#como-comprar">Cómo comprar</a>
+                        </div>
+                    </div>
+                    <div class="hero-media">
+                        <figure class="frame">
+                            <img src="images/difusor_200.jpg" width="768" height="1024" alt="Frasco de difusor ambiental de 200 ml con etiqueta de Mili Aromas" fetchpriority="high">
+                            <figcaption><span>Difusor</span><span>200 ml</span></figcaption>
+                        </figure>
+                        <figure class="frame">
+                            <img src="images/perfume_250.jpg" width="768" height="1024" alt="Spray aromatizante de 250 ml con etiqueta de Mili Aromas">
+                            <figcaption><span>Spray</span><span>250 ml</span></figcaption>
+                        </figure>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section section-alt" id="como-comprar" aria-labelledby="como-comprar-title">
+                <div class="container">
+                    <div class="section-head">
+                        <h2 id="como-comprar-title">Cómo comprar</h2>
+                        <p>No pagás nada en la web. El pedido se confirma por WhatsApp.</p>
+                    </div>
+                    <ol class="steps">
+                        <li class="step">
+                            <span class="step-num" aria-hidden="true">1</span>
+                            <div>
+                                <h3>Elegí producto y aroma</h3>
+                                <p>Sumá al pedido todos los que quieras, en la cantidad que necesites.</p>
+                            </div>
+                        </li>
+                        <li class="step">
+                            <span class="step-num" aria-hidden="true">2</span>
+                            <div>
+                                <h3>Revisá tu pedido</h3>
+                                <p>Ajustá cantidades y dejanos tu nombre y cualquier aclaración.</p>
+                            </div>
+                        </li>
+                        <li class="step">
+                            <span class="step-num" aria-hidden="true">3</span>
+                            <div>
+                                <h3>Envialo por WhatsApp</h3>
+                                <p>Se abre el chat con el pedido ya escrito. Ahí te confirmamos disponibilidad, entrega y pago.</p>
+                            </div>
+                        </li>
+                    </ol>
+                    <div class="store-info" id="storeInfo" hidden></div>
+                </div>
+            </section>
+
+            <section class="section" id="productos" aria-labelledby="productos-title">
+                <div class="container">
+                    <div class="section-head">
+                        <h2 id="productos-title">Elegí tu aroma</h2>
+                        <p>Cada producto viene en varias fragancias. Tocá la que quieras y sumala al pedido.</p>
+                    </div>
+                    <div class="products" id="productsGrid"></div>
+                </div>
+            </section>
+
+            <section class="section section-alt" aria-labelledby="contacto-title">
+                <div class="container contact-grid">
+                    <div class="section-head" style="margin-bottom:0">
+                        <h2 id="contacto-title">¿Tenés alguna duda?</h2>
+                        <p>Escribinos antes de pedir, por WhatsApp o por Instagram.</p>
+                    </div>
+                    <div class="contact-actions">
+                        <a class="btn btn-primary" id="contactWa" href="#" target="_blank" rel="noopener">
+                            <svg class="icon icon-fill" aria-hidden="true"><use href="#i-wa"/></svg>
+                            WhatsApp
+                        </a>
+                        <a class="btn btn-ghost" id="contactIg" href="#" target="_blank" rel="noopener">
+                            <svg class="icon" aria-hidden="true"><use href="#i-ig"/></svg>
+                            Instagram
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="site-footer">
+            <div class="container footer-row">
+                <p>© <span id="year">2026</span> Mili Aromas. Todos los derechos reservados.</p>
+                <p>Sitio hecho por <a href="https://santivi03.github.io/SantiVi-asDev/" target="_blank" rel="noopener">Santiago Viñas</a></p>
+            </div>
+        </footer>
+
+        <div class="orderbar" id="orderbar">
+            <button type="button" class="orderbar-btn" id="orderbarBtn" aria-haspopup="dialog" aria-controls="drawer">
+                <span class="orderbar-sum">
+                    <small id="orderbarCount">0 productos</small>
+                    <strong id="orderbarTotal">$0</strong>
+                </span>
+                <span class="orderbar-cta">
+                    Ver pedido
+                    <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
+                </span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Panel del pedido -->
+    <div class="scrim" id="scrim"></div>
+    <aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="drawerTitle">
+        <div class="drawer-head">
+            <h2 id="drawerTitle">Tu pedido</h2>
+            <button type="button" class="icon-btn" id="closeBtn" aria-label="Cerrar pedido">
+                <svg class="icon" aria-hidden="true"><use href="#i-x"/></svg>
+            </button>
+        </div>
+
+        <form class="drawer-form" id="checkoutForm" novalidate>
+            <div class="drawer-scroll">
+                <ul class="lines" id="lines"></ul>
+
+                <div class="empty" id="empty">
+                    <p>Todavía no agregaste nada</p>
+                    <span>Elegí un producto y un aroma para empezar.</span>
+                    <button type="button" class="btn btn-ghost" id="emptyBtn">Ver productos</button>
+                </div>
+
+                <div class="customer" id="customer">
+                    <h3>Tus datos</h3>
+                    <div class="field">
+                        <label for="cName">Nombre</label>
+                        <input id="cName" name="name" type="text" autocomplete="name" required aria-describedby="cNameErr" placeholder="Cómo te llamás">
+                        <p class="field-error" id="cNameErr" hidden>
+                            <svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg>
+                            Poné tu nombre así sabemos de quién es el pedido.
+                        </p>
+                    </div>
+                    <div class="field" id="fEntrega" hidden>
+                        <label for="cEntrega">Entrega</label>
+                        <select id="cEntrega" name="entrega"></select>
+                    </div>
+                    <div class="field" id="fPago" hidden>
+                        <label for="cPago">Forma de pago</label>
+                        <select id="cPago" name="pago"></select>
+                    </div>
+                    <div class="field">
+                        <label for="cNotes">Aclaraciones <span class="opt">(opcional)</span></label>
+                        <textarea id="cNotes" name="notes" rows="2" placeholder="Por ejemplo, tu zona o un horario"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="drawer-foot">
+                <div class="total-row">
+                    <span>Total</span>
+                    <strong id="totalText">$0</strong>
+                </div>
+                <button type="submit" class="btn btn-wa" id="sendBtn">
+                    <svg class="icon icon-fill" aria-hidden="true"><use href="#i-wa"/></svg>
+                    Enviar pedido por WhatsApp
+                </button>
+                <p class="foot-note" id="footNote">Se abre WhatsApp con tu pedido escrito. Lo enviás y ahí te confirmamos disponibilidad, entrega y pago.</p>
+                <div class="foot-links">
+                    <button type="button" class="link-btn" id="clearBtn">Vaciar pedido</button>
+                </div>
+            </div>
+        </form>
+    </aside>
+
+    <div class="sr-only" role="status" aria-live="polite" id="live"></div>
+
+    <script>
+        /* ─── Configuración de la tienda ─────────────────────────────── */
+        const CONFIG = {
+            whatsapp: "5491158857547",
+            instagram: "mili.aromas",
+            // PENDIENTE: confirmar con Mili. Mientras estén vacías, el formulario
+            // no las pregunta y el mensaje consulta cómo coordinar entrega y pago.
+            entregas: [],   // ej.: ["Retiro", "Envío a domicilio"]
+            pagos: [],      // ej.: ["Transferencia", "Efectivo"]
+        };
+
+        const MAX_QTY = 20;
+        const STORAGE_KEY = "miliaromas:pedido:v1";
+
+        const products = [
+            {
+                id: 1,
+                name: "Difusor ambiental 200cc",
+                price: 15000,
+                image: "images/difusor_200.jpg",
+                alt: "Frasco de difusor ambiental de 200 ml",
+                aromas: ["Naranja pimienta", "Limón albahaca", "Vainilla azúcar", "Saibaba", "Citrus", "Verbena", "Jazmín", "Coniglio"]
+            },
+            {
+                id: 2,
+                name: "Difusor ambiental 125cc",
+                price: 10000,
+                image: "images/difusor_125.jpg",
+                alt: "Frasco de difusor ambiental de 125 ml",
+                aromas: ["Limón albahaca", "Coniglio", "Citrus", "Verbena", "Papaya durazno", "Naranja pimienta", "Jazmín", "Coco vainilla", "Vainilla azúcar"]
+            },
+            {
+                id: 3,
+                name: "Perfume ambiental 250ml",
+                price: 6500,
+                image: "images/perfume_250.jpg",
+                alt: "Spray aromatizante de 250 ml",
+                aromas: ["Melón wan", "Citrus", "Rosa jazmín", "Naranja pimienta", "Coniglio", "Vainilla azúcar", "Vivex", "Limón bamboo", "Lemongrass", "Nagchampa", "Limón albahaca"]
+            },
+            {
+                id: 4,
+                name: "Difusor auto",
+                price: 3500,
+                image: null, // PENDIENTE: foto real del difusor para auto
+                alt: "",
+                aromas: ["Wanama", "Citrus", "Pepino melón", "Love"]
+            }
+        ];
+
+        /* ─── Utilidades ─────────────────────────────────────────────── */
+        const $ = (sel) => document.querySelector(sel);
+        const money = new Intl.NumberFormat("es-AR", { style: "currency", currency: "ARS", maximumFractionDigits: 0 });
+        const formatMoney = (n) => money.format(n);
+        const plainMoney = (n) => formatMoney(n).replace(/\s/g, ""); // "$15.000" para el mensaje
+        const icon = (id, cls = "icon") => `<svg class="${cls}" aria-hidden="true"><use href="#${id}"/></svg>`;
+        const clamp = (n) => Math.min(MAX_QTY, Math.max(1, n));
+        const findProduct = (id) => products.find((p) => p.id === id);
+        const plural = (n, one, many) => `${n} ${n === 1 ? one : many}`;
+        const isTouch = () => window.matchMedia("(pointer: coarse)").matches;
+
+        const storage = {
+            read() {
+                try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; }
+                catch { return {}; }
+            },
+            write(data) {
+                try { localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); } catch { /* sin almacenamiento */ }
+            }
+        };
+
+        /* ─── Estado ─────────────────────────────────────────────────── */
+        // Solo guardamos id, aroma y cantidad; el precio sale siempre del catálogo.
+        const saved = storage.read();
+        let cart = (Array.isArray(saved.cart) ? saved.cart : []).filter((item) => {
+            const p = findProduct(item.id);
+            return p && p.aromas.includes(item.aroma) && Number.isInteger(item.qty);
+        }).map((item) => ({ id: item.id, aroma: item.aroma, qty: clamp(item.qty) }));
+        let customer = Object.assign({ name: "", entrega: "", pago: "", notes: "" }, saved.customer || {});
+        const cardQty = Object.fromEntries(products.map((p) => [p.id, 1]));
+
+        const persist = () => storage.write({ cart, customer });
+        const cartCount = () => cart.reduce((sum, i) => sum + i.qty, 0);
+        const cartTotal = () => cart.reduce((sum, i) => sum + findProduct(i.id).price * i.qty, 0);
+        const announce = (msg) => { const live = $("#live"); live.textContent = ""; requestAnimationFrame(() => { live.textContent = msg; }); };
+
+        /* ─── Productos ──────────────────────────────────────────────── */
+        const mediaHTML = (p) => p.image
+            ? `<img src="${p.image}" alt="${p.alt}" width="768" height="1024" loading="lazy" decoding="async">`
+            : `<div class="placeholder" role="img" aria-label="Foto del ${p.name} próximamente">
+                   <div class="placeholder-label"><div class="placeholder-inner">
+                       <b>Mili Aromas.</b><span>Foto<br>próximamente</span>
+                   </div></div>
+               </div>`;
+
+        const renderProducts = () => {
+            $("#productsGrid").innerHTML = products.map((p) => `
+                <article class="product" data-id="${p.id}" aria-labelledby="pn-${p.id}">
+                    <div class="product-media">${mediaHTML(p)}</div>
+                    <div class="product-body">
+                        <div class="product-top">
+                            <h3 class="product-name" id="pn-${p.id}">${p.name}</h3>
+                            <p class="price">${formatMoney(p.price)}</p>
+                        </div>
+                        <fieldset class="aromas" aria-describedby="err-${p.id}">
+                            <legend>Aroma <span>· ${p.aromas.length} opciones</span></legend>
+                            <div class="chips">
+                                ${p.aromas.map((a, i) => `
+                                    <label class="chip">
+                                        <input type="radio" name="aroma-${p.id}" value="${a}" id="a-${p.id}-${i}">
+                                        <span>${a}</span>
+                                    </label>`).join("")}
+                            </div>
+                            <p class="field-error" id="err-${p.id}" hidden>${icon("i-alert")}Elegí un aroma para sumarlo al pedido.</p>
+                        </fieldset>
+                        <div class="buy-row">
+                            <div>
+                                <span class="qty-label" id="ql-${p.id}">Cantidad</span>
+                                <div class="stepper" role="group" aria-labelledby="ql-${p.id}">
+                                    <button type="button" data-step="-1" aria-label="Restar uno" disabled>${icon("i-minus")}</button>
+                                    <output aria-live="polite">1</output>
+                                    <button type="button" data-step="1" aria-label="Sumar uno">${icon("i-plus")}</button>
+                                </div>
+                            </div>
+                            <button type="button" class="btn btn-primary add-btn" data-add>
+                                ${icon("i-bag")}<span>Agregar al pedido</span>
+                            </button>
+                        </div>
+                    </div>
+                </article>`).join("");
+        };
+
+        const updateCardStepper = (card, id) => {
+            const qty = cardQty[id];
+            card.querySelector(".stepper output").textContent = qty;
+            card.querySelector('[data-step="-1"]').disabled = qty <= 1;
+            card.querySelector('[data-step="1"]').disabled = qty >= MAX_QTY;
+        };
+
+        const setAromaError = (card, id, show) => {
+            card.querySelector(".aromas").classList.toggle("has-error", show);
+            card.querySelector(`#err-${id}`).hidden = !show;
+        };
+
+        const addToCart = (card, id) => {
+            const picked = card.querySelector(`input[name="aroma-${id}"]:checked`);
+            if (!picked) {
+                setAromaError(card, id, true);
+                card.querySelector(`input[name="aroma-${id}"]`).focus();
+                return;
+            }
+            const aroma = picked.value;
+            const qty = cardQty[id];
+            const existing = cart.find((i) => i.id === id && i.aroma === aroma);
+            if (existing) existing.qty = clamp(existing.qty + qty);
+            else cart.push({ id, aroma, qty });
+
+            persist();
+            renderCart();
+            bumpBadge();
+
+            const btn = card.querySelector("[data-add]");
+            btn.classList.add("added");
+            btn.innerHTML = `${icon("i-check")}<span>Agregado</span>`;
+            clearTimeout(btn._t);
+            btn._t = setTimeout(() => {
+                btn.classList.remove("added");
+                btn.innerHTML = `${icon("i-bag")}<span>Agregar al pedido</span>`;
+            }, 1600);
+
+            cardQty[id] = 1;
+            updateCardStepper(card, id);
+            announce(`Sumaste ${qty} × ${findProduct(id).name}, aroma ${aroma}. Tenés ${plural(cartCount(), "producto", "productos")} en el pedido.`);
+        };
+
+        $("#productsGrid").addEventListener("click", (e) => {
+            const card = e.target.closest(".product");
+            if (!card) return;
+            const id = Number(card.dataset.id);
+            const stepBtn = e.target.closest("[data-step]");
+            if (stepBtn) {
+                cardQty[id] = clamp(cardQty[id] + Number(stepBtn.dataset.step));
+                updateCardStepper(card, id);
+            } else if (e.target.closest("[data-add]")) {
+                addToCart(card, id);
+            }
+        });
+
+        $("#productsGrid").addEventListener("change", (e) => {
+            const card = e.target.closest(".product");
+            if (card && e.target.type === "radio") setAromaError(card, Number(card.dataset.id), false);
+        });
+
+        /* ─── Pedido ─────────────────────────────────────────────────── */
+        const bumpBadge = () => {
+            const badge = $("#cartBadge");
+            badge.classList.remove("bump");
+            void badge.offsetWidth;
+            badge.classList.add("bump");
+        };
+
+        const renderCart = () => {
+            const count = cartCount();
+            const total = cartTotal();
+            const empty = cart.length === 0;
+
+            const badge = $("#cartBadge");
+            badge.hidden = empty;
+            badge.textContent = count;
+            $("#cartBtnLabel").textContent = empty ? "Ver pedido (vacío)" : `Ver pedido, ${plural(count, "producto", "productos")}`;
+
+            $("#orderbarCount").textContent = plural(count, "producto", "productos");
+            $("#orderbarTotal").textContent = formatMoney(total);
+            updateOrderbar();
+
+            $("#lines").innerHTML = cart.map((item, index) => {
+                const p = findProduct(item.id);
+                return `
+                    <li class="line" data-index="${index}">
+                        <div>
+                            <p class="line-name">${p.name}</p>
+                            <p class="line-meta">${item.aroma} · ${formatMoney(p.price)} c/u</p>
+                        </div>
+                        <p class="line-total">${formatMoney(p.price * item.qty)}</p>
+                        <div class="line-actions">
+                            <div class="stepper sm" role="group" aria-label="Cantidad de ${p.name}, ${item.aroma}">
+                                <button type="button" data-line-step="-1" aria-label="Restar uno" ${item.qty <= 1 ? "disabled" : ""}>${icon("i-minus")}</button>
+                                <output>${item.qty}</output>
+                                <button type="button" data-line-step="1" aria-label="Sumar uno" ${item.qty >= MAX_QTY ? "disabled" : ""}>${icon("i-plus")}</button>
+                            </div>
+                            <button type="button" class="remove-btn" data-remove aria-label="Quitar ${p.name}, ${item.aroma}">
+                                ${icon("i-trash")}Quitar
+                            </button>
+                        </div>
+                    </li>`;
+            }).join("");
+
+            $("#empty").hidden = !empty;
+            $("#customer").hidden = empty;
+            $("#clearBtn").hidden = empty;
+            $("#totalText").textContent = formatMoney(total);
+            $("#sendBtn").disabled = empty;
+        };
+
+        $("#lines").addEventListener("click", (e) => {
+            const line = e.target.closest(".line");
+            if (!line) return;
+            const index = Number(line.dataset.index);
+            const item = cart[index];
+            const step = e.target.closest("[data-line-step]");
+            if (step) {
+                item.qty = clamp(item.qty + Number(step.dataset.lineStep));
+            } else if (e.target.closest("[data-remove]")) {
+                cart.splice(index, 1);
+                announce(`Quitaste ${findProduct(item.id).name}, ${item.aroma}.`);
+            } else {
+                return;
+            }
+            persist();
+            renderCart();
+            // Mantener el foco en un lugar útil después de re-renderizar
+            const same = $(`#lines .line[data-index="${Math.min(index, cart.length - 1)}"]`);
+            if (!same) {
+                $("#closeBtn").focus();
+            } else if (step) {
+                const target = same.querySelector(`[data-line-step="${step.dataset.lineStep}"]`);
+                (target.disabled ? same.querySelector("[data-line-step]:not(:disabled)") : target)?.focus();
+            } else {
+                same.querySelector("[data-remove]").focus();
+            }
+        });
+
+        $("#clearBtn").addEventListener("click", () => {
+            if (!confirm("¿Vaciar el pedido?")) return;
+            cart = [];
+            persist();
+            renderCart();
+            announce("Vaciaste el pedido.");
+            $("#closeBtn").focus();
+        });
+
+        /* ─── Barra y panel ──────────────────────────────────────────── */
+        let drawerOpen = false;
+        let lastFocus = null;
+
+        const updateOrderbar = () => {
+            const bar = $("#orderbar");
+            const show = cart.length > 0 && !drawerOpen;
+            bar.classList.toggle("show", show);
+            // Deja lugar para que la barra no tape el final de la página en celular
+            const h = show && window.innerWidth < 960 ? bar.offsetHeight : 0;
+            document.documentElement.style.setProperty("--bar-h", `${h}px`);
+        };
+
+        const openDrawer = () => {
+            if (drawerOpen) return;
+            drawerOpen = true;
+            lastFocus = document.activeElement;
+            $("#page").inert = true;
+            document.body.style.overflow = "hidden";
+            $("#drawer").classList.add("open");
+            $("#scrim").classList.add("open");
+            updateOrderbar();
+            setTimeout(() => $("#closeBtn").focus(), 50);
+        };
+
+        const closeDrawer = () => {
+            if (!drawerOpen) return;
+            drawerOpen = false;
+            $("#page").inert = false;
+            document.body.style.overflow = "";
+            $("#drawer").classList.remove("open");
+            $("#scrim").classList.remove("open");
+            updateOrderbar();
+            lastFocus?.focus?.();
+        };
+
+        $("#cartBtn").addEventListener("click", openDrawer);
+        $("#orderbarBtn").addEventListener("click", openDrawer);
+        $("#closeBtn").addEventListener("click", closeDrawer);
+        $("#scrim").addEventListener("click", closeDrawer);
+        $("#emptyBtn").addEventListener("click", () => {
+            closeDrawer();
+            $("#productos").scrollIntoView();
+        });
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape" && drawerOpen) closeDrawer();
+        });
+        window.addEventListener("resize", updateOrderbar);
+
+        /* ─── Datos del cliente ──────────────────────────────────────── */
+        const fillSelect = (select, options) => {
+            select.innerHTML = `<option value="">Elegí una opción</option>` +
+                options.map((o) => `<option value="${o}">${o}</option>`).join("");
+        };
+
+        const initCustomer = () => {
+            if (CONFIG.entregas.length) {
+                $("#fEntrega").hidden = false;
+                fillSelect($("#cEntrega"), CONFIG.entregas);
+            }
+            if (CONFIG.pagos.length) {
+                $("#fPago").hidden = false;
+                fillSelect($("#cPago"), CONFIG.pagos);
+            }
+            $("#cName").value = customer.name;
+            $("#cEntrega").value = CONFIG.entregas.includes(customer.entrega) ? customer.entrega : "";
+            $("#cPago").value = CONFIG.pagos.includes(customer.pago) ? customer.pago : "";
+            $("#cNotes").value = customer.notes;
+
+            $("#checkoutForm").addEventListener("input", () => {
+                customer = {
+                    name: $("#cName").value,
+                    entrega: $("#cEntrega").value,
+                    pago: $("#cPago").value,
+                    notes: $("#cNotes").value
+                };
+                if (customer.name.trim()) setNameError(false);
+                persist();
+            });
+        };
+
+        const setNameError = (show) => {
+            $("#cName").setAttribute("aria-invalid", show ? "true" : "false");
+            $("#cNameErr").hidden = !show;
+        };
+
+        /* ─── Envío a WhatsApp ───────────────────────────────────────── */
+        const buildMessage = () => {
+            const code = "MA-" + Date.now().toString(36).slice(-5).toUpperCase();
+            const lines = cart.map((item) => {
+                const p = findProduct(item.id);
+                return `• ${item.qty} × ${p.name}, aroma ${item.aroma}: ${plainMoney(p.price * item.qty)}`;
+            });
+
+            const data = [`Nombre: ${customer.name.trim()}`];
+            if (customer.entrega) data.push(`Entrega: ${customer.entrega}`);
+            if (customer.pago) data.push(`Pago: ${customer.pago}`);
+            if (customer.notes.trim()) data.push(`Aclaraciones: ${customer.notes.trim()}`);
+
+            const pending = [];
+            if (!customer.entrega) pending.push("la entrega");
+            if (!customer.pago) pending.push("el pago");
+            const question = pending.length
+                ? `¿Me confirmás si hay stock y cómo coordinamos ${pending.join(" y ")}?`
+                : "¿Me confirmás si hay stock?";
+
+            return [
+                `¡Hola! Quiero hacer este pedido (${code}):`,
+                "",
+                ...lines,
+                "",
+                `*Total: ${plainMoney(cartTotal())}*`,
+                "",
+                ...data,
+                "",
+                question
+            ].join("\n");
+        };
+
+        const waLink = (text) => `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(text)}`;
+
+        $("#checkoutForm").addEventListener("submit", (e) => {
+            e.preventDefault();
+            if (!cart.length) return;
+            if (!customer.name.trim()) {
+                setNameError(true);
+                $("#cName").focus();
+                return;
+            }
+
+            const url = waLink(buildMessage());
+            $("#footNote").innerHTML = `Si WhatsApp no se abrió, <a href="${url}" target="_blank" rel="noopener">tocá acá</a>. El pedido sigue guardado por si querés cambiar algo.`;
+
+            // En celular (incluido el navegador de Instagram) abrir en la misma pestaña es lo más confiable.
+            if (isTouch()) {
+                window.location.href = url;
+            } else {
+                const win = window.open(url, "_blank");
+                if (win) win.opener = null;
+                else window.location.href = url;
+            }
+        });
+
+        /* ─── Inicio ─────────────────────────────────────────────────── */
+        $("#year").textContent = new Date().getFullYear();
+        $("#contactWa").href = waLink("¡Hola! Tengo una consulta sobre los productos de Mili Aromas.");
+        $("#contactIg").href = `https://instagram.com/${CONFIG.instagram}`;
+
+        if (CONFIG.entregas.length || CONFIG.pagos.length) {
+            const info = $("#storeInfo");
+            info.hidden = false;
+            info.innerHTML = [
+                CONFIG.entregas.length ? `<p><strong>Entregas:</strong> ${CONFIG.entregas.join(", ")}</p>` : "",
+                CONFIG.pagos.length ? `<p><strong>Pagos:</strong> ${CONFIG.pagos.join(", ")}</p>` : ""
+            ].join("");
+        }
+
+        renderProducts();
+        initCustomer();
+        renderCart();
+    </script>
+</body>
+</html>
