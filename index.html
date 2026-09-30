@@ -957,6 +957,7 @@
                 name: "Perfume ambiental 250ml",
                 price: 6500,
                 image: "images/perfume_250.jpg?v=2",
+                focus: "50% 30%", // el gatillo queda alto: subir el encuadre para no cortarlo
                 alt: "Spray aromatizante de 250 ml",
                 aromas: ["Melón wan", "Citrus", "Rosa jazmín", "Naranja pimienta", "Coniglio", "Vainilla azúcar", "Vivex", "Limón bamboo", "Lemongrass", "Nagchampa", "Limón albahaca"]
             },
@@ -964,8 +965,9 @@
                 id: 4,
                 name: "Difusor auto",
                 price: 3500,
-                image: "images/difusor_auto.jpg?v=1",
-                alt: "Difusor para auto con tapa de madera y etiqueta de Mili Aromas",
+                image: "images/difusor_auto.jpg?v=2",
+                focus: "40% 62%", // encuadre corrido para que se vea el cordón
+                alt: "Difusor para auto con tapa de madera, cordón para colgar y etiqueta de Mili Aromas",
                 aromas: ["Wanama", "Citrus", "Pepino melón", "Love"]
             }
         ];
@@ -1008,7 +1010,7 @@
 
         /* ─── Productos ──────────────────────────────────────────────── */
         const mediaHTML = (p) => p.image
-            ? `<img src="${p.image}" alt="${p.alt}" width="768" height="1024" loading="lazy" decoding="async">`
+            ? `<img src="${p.image}" alt="${p.alt}" width="768" height="1024" loading="lazy" decoding="async"${p.focus ? ` style="object-position:${p.focus}"` : ""}>`
             : `<div class="placeholder" role="img" aria-label="Foto del ${p.name} próximamente">
                    <div class="placeholder-label"><div class="placeholder-inner">
                        <b>Mili Aromas.</b><span>Foto<br>próximamente</span>
