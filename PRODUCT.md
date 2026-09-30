@@ -12,7 +12,6 @@ La web es un catálogo con carrito. No cobra online: al confirmar, abre un chat 
 ## Datos pendientes de confirmar
 - Formas de entrega (retiro, envío, zonas).
 - Medios de pago.
-- Foto real del difusor para auto.
 
 Se cargan en `CONFIG` dentro de `index.html`. No inventar estos datos.
 

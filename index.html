@@ -478,6 +478,8 @@
         }
         .footer-row { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 24px; }
         .site-footer a { color: var(--ink); }
+        .footer-row { align-items: center; }
+        .credit { display: inline-flex; align-items: center; min-height: 44px; padding: 0 4px; }
 
         /* Barra de pedido */
         .orderbar {
@@ -837,7 +839,7 @@
         <footer class="site-footer">
             <div class="container footer-row">
                 <p>© <span id="year">2026</span> Mili Aromas. Todos los derechos reservados.</p>
-                <p>Sitio hecho por <a href="https://santivi03.github.io/SantiVi-asDev/" target="_blank" rel="noopener">Santiago Viñas</a></p>
+                <p>Hecho por <a class="credit" href="https://santivi03.github.io/SantiVi-asDev/" target="_blank" rel="noopener">Santi Viñas</a></p>
             </div>
         </footer>
 
@@ -962,8 +964,8 @@
                 id: 4,
                 name: "Difusor auto",
                 price: 3500,
-                image: null, // PENDIENTE: foto real del difusor para auto
-                alt: "",
+                image: "images/difusor_auto.jpg?v=1",
+                alt: "Difusor para auto con tapa de madera y etiqueta de Mili Aromas",
                 aromas: ["Wanama", "Citrus", "Pepino melón", "Love"]
             }
         ];
