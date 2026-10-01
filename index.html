@@ -1436,35 +1436,49 @@
             const pause = () => { paused = true; clearTimeout(resumeTimer); };
             const resume = (delay = 0) => { clearTimeout(resumeTimer); resumeTimer = setTimeout(() => { paused = false; }, delay); };
 
-            // Mantener la posición dentro de la tanda del medio
-            const wrap = () => {
-                const w = setWidth();
-                if (track.scrollLeft < w * 0.5) track.scrollLeft += w;
-                else if (track.scrollLeft > w * 1.5) track.scrollLeft -= w;
-            };
-            track.addEventListener("scroll", wrap, { passive: true });
-
+            // La posición vive en "pos" (con decimales). Muchos celulares redondean scrollLeft
+            // a píxeles enteros: si la leyéramos de vuelta en cada cuadro, nunca avanzaría.
             let pos = track.scrollLeft;
+
+            // Mantener la posición dentro de la tanda del medio (loop sin corte)
+            const wrapPos = (x) => {
+                const w = setWidth();
+                if (x < w * 0.5) return x + w;
+                if (x > w * 1.5) return x - w;
+                return x;
+            };
+
+            // Si el usuario lo mueve (dedo, flechas), tomamos su posición como punto de partida
+            track.addEventListener("scroll", () => {
+                if (!paused) return;
+                const fixed = wrapPos(track.scrollLeft);
+                if (fixed !== track.scrollLeft) track.scrollLeft = fixed;
+                pos = fixed;
+            }, { passive: true });
+
             let last = performance.now();
             const tick = (now) => {
                 const dt = Math.min(now - last, 50);
                 last = now;
                 if (!paused && !reduceMotion.matches && !document.hidden) {
-                    if (Math.abs(track.scrollLeft - pos) > 2) pos = track.scrollLeft; // el usuario lo movió
-                    pos += dt * 0.03; // ~30 px por segundo
+                    pos = wrapPos(pos + dt * 0.03); // ~30 px por segundo
                     track.scrollLeft = pos;
-                    pos = track.scrollLeft; // por si wrap() lo reubicó
                 }
                 requestAnimationFrame(tick);
             };
             requestAnimationFrame(tick);
 
-            track.addEventListener("mouseenter", pause);
-            track.addEventListener("mouseleave", () => resume(0));
-            track.addEventListener("focusin", pause);
-            track.addEventListener("focusout", () => resume(0));
-            track.addEventListener("pointerdown", pause);
+            // Mouse: frena mientras está encima. En celular el toque dispara un mouseenter
+            // falso sin mouseleave, por eso solo se escucha el puntero de tipo mouse.
+            track.addEventListener("pointerenter", (e) => { if (e.pointerType === "mouse") pause(); });
+            track.addEventListener("pointerleave", (e) => { if (e.pointerType === "mouse") resume(0); });
+            // Dedo: frena mientras desliza y sigue solo un rato después de soltar
+            track.addEventListener("touchstart", pause, { passive: true });
             track.addEventListener("touchend", () => resume(2500), { passive: true });
+            track.addEventListener("touchcancel", () => resume(2500), { passive: true });
+            // Teclado: frena solo con foco visible (tabulando), no por un toque
+            track.addEventListener("focusin", () => { if (track.querySelector(":focus-visible")) pause(); });
+            track.addEventListener("focusout", () => resume(0));
 
             const step = (dir) => {
                 pause();
