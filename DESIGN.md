@@ -142,7 +142,7 @@ Casi plano. Las tarjetas usan borde de 1px y nada de sombra. La única elevació
 
 ## Shapes
 
-Radio de 12px en tarjetas, 6px en botones e inputs y píldora solo en los chips de aroma y el contador. Las fotos llevan un marco fino inset, como la etiqueta.
+Radio de 12px en tarjetas, 6px en botones e inputs y píldora solo en los chips de aroma y el contador.
 
 ## Components
 

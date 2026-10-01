@@ -72,6 +72,7 @@
         /* Bodoni Moda afina los trazos finos a tamaños grandes hasta casi borrarlos
            (la diagonal de la "A"). Fijamos un tamaño óptico bajo para que tengan cuerpo. */
         .wordmark, h1, h2, .product-name, .step-num, .total-row strong,
+        .slide-name,
         .empty p, .customer h3, .placeholder-inner b {
             font-optical-sizing: none;
             font-variation-settings: "opsz" 14;
@@ -220,7 +221,85 @@
 
         /* Hero */
         .hero { padding: 40px 0 56px; }
-        .hero-grid { display: grid; gap: 40px; align-items: center; }
+        .hero-grid { display: grid; gap: 44px; align-items: center; }
+
+        /* Carrusel de productos en la portada */
+        .hero { padding-bottom: 40px; }
+        .carousel { position: relative; margin-top: 8px; }
+        .carousel-track {
+            display: flex;
+            gap: 20px;
+            padding: 22px var(--gutter) 34px;
+            overflow-x: auto;
+            overscroll-behavior-x: contain;
+            scrollbar-width: none;
+            -webkit-mask-image: linear-gradient(90deg, transparent, #000 var(--gutter), #000 calc(100% - var(--gutter)), transparent);
+            mask-image: linear-gradient(90deg, transparent, #000 var(--gutter), #000 calc(100% - var(--gutter)), transparent);
+        }
+        .carousel-track::-webkit-scrollbar { display: none; }
+        .slide {
+            flex: none;
+            width: min(66vw, 250px);
+            display: block;
+            text-decoration: none;
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: var(--r-md);
+            overflow: hidden;
+            transform: translateY(0);
+            transition: transform .45s var(--ease-out), box-shadow .45s var(--ease-out), border-color .45s;
+        }
+        .slide:hover,
+        .slide:focus-visible {
+            transform: translateY(-12px);
+            border-color: var(--ink);
+            box-shadow: 0 22px 34px -18px rgba(29, 26, 23, 0.4);
+        }
+        .slide-media { overflow: hidden; background: var(--paper-dark); }
+        .slide-media img {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            object-position: 50% 62%;
+            transition: transform .7s var(--ease-out);
+        }
+        .slide:hover .slide-media img,
+        .slide:focus-visible .slide-media img { transform: scale(1.04); }
+        .slide-body { padding: 14px 16px 16px; display: grid; gap: 2px; }
+        .slide-name {
+            font-family: var(--serif);
+            font-size: 20px;
+            font-weight: 500;
+            line-height: 1.2;
+        }
+        .slide-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 8px;
+            margin-top: 4px;
+        }
+        .slide-price { color: var(--clay); font-weight: 600; font-variant-numeric: tabular-nums; }
+        .slide-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        .slide-cta .icon { width: 16px; height: 16px; transition: transform .3s var(--ease-out); }
+        .slide:hover .slide-cta .icon { transform: translateX(3px); }
+        .carousel-nav {
+            display: none;
+            justify-content: flex-end;
+            gap: 8px;
+            padding: 0 var(--gutter);
+            max-width: 1180px;
+            margin: 0 auto;
+        }
+        .carousel-nav .icon-btn { border: 1px solid var(--ink); }
+        .carousel-nav .flip { transform: scaleX(-1); }
         .hero h1 {
             font-family: var(--serif);
             font-weight: 500;
@@ -236,37 +315,6 @@
             color: var(--ink-soft);
         }
         .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
-
-        .hero-media {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 14px;
-            align-items: start;
-        }
-        .frame {
-            background: var(--surface);
-            border: 1px solid var(--ink);
-            padding: 8px;
-        }
-        .frame img {
-            width: 100%;
-            height: auto;
-            aspect-ratio: 4 / 5;
-            object-fit: cover;
-            object-position: 50% 58%;
-        }
-        .frame figcaption {
-            display: flex;
-            justify-content: space-between;
-            gap: 8px;
-            padding: 10px 2px 2px;
-            font-size: 12px;
-            font-weight: 600;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-        }
-        .frame figcaption span:last-child { color: var(--ink-soft); }
-        .hero-media .frame:nth-child(2) { margin-top: 48px; }
 
         /* Secciones */
         .section { padding: 64px 0; }
@@ -681,8 +729,12 @@
 
         @media (min-width: 960px) {
             .hero { padding: 72px 0 96px; }
-            .hero-grid { grid-template-columns: 1.15fr 0.85fr; gap: 64px; }
-            .hero-media { width: 100%; max-width: 480px; justify-self: end; }
+            .hero { padding-bottom: 56px; }
+            .slide { width: 280px; }
+            .carousel-nav { display: flex; }
+            .carousel-track {
+                padding-left: max(var(--gutter), calc((100vw - 1180px) / 2 + var(--gutter)));
+            }
             .section { padding: 96px 0; }
             .orderbar {
                 left: auto;
@@ -705,6 +757,7 @@
 
         @media (prefers-reduced-motion: reduce) {
             html { scroll-behavior: auto; }
+
             *, *::before, *::after {
                 animation-duration: 0.01ms !important;
                 animation-iteration-count: 1 !important;
@@ -760,16 +813,17 @@
                             <a class="btn btn-ghost" href="#como-comprar">Cómo comprar</a>
                         </div>
                     </div>
-                    <div class="hero-media">
-                        <figure class="frame">
-                            <img src="images/difusor_200.jpg?v=2" width="768" height="1024" alt="Frasco de difusor ambiental de 200 ml con etiqueta de Mili Aromas" fetchpriority="high">
-                            <figcaption><span>Difusor</span><span>200 ml</span></figcaption>
-                        </figure>
-                        <figure class="frame">
-                            <img src="images/perfume_250.jpg?v=2" width="768" height="1024" alt="Spray aromatizante de 250 ml con etiqueta de Mili Aromas">
-                            <figcaption><span>Spray</span><span>250 ml</span></figcaption>
-                        </figure>
+                </div>
+                <div class="carousel" aria-roledescription="carrusel" aria-label="Productos destacados">
+                    <div class="carousel-nav">
+                        <button type="button" class="icon-btn" id="carPrev" aria-label="Productos anteriores">
+                            <svg class="icon flip" aria-hidden="true"><use href="#i-arrow"/></svg>
+                        </button>
+                        <button type="button" class="icon-btn" id="carNext" aria-label="Productos siguientes">
+                            <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
+                        </button>
                     </div>
+                    <div class="carousel-track" id="carouselTrack"></div>
                 </div>
             </section>
 
@@ -1346,6 +1400,89 @@
             }
         });
 
+        /* ─── Portada: carrusel de productos ─────────────────────────── */
+        const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+        const goToProduct = (id) => {
+            const card = $(`.product[data-id="${id}"]`);
+            card.scrollIntoView({ behavior: reduceMotion.matches ? "auto" : "smooth", block: "start" });
+            setTimeout(() => card.querySelector(`input[name="aroma-${id}"]`).focus({ preventScroll: true }), reduceMotion.matches ? 0 : 600);
+        };
+
+        const initCarousel = () => {
+            const track = $("#carouselTrack");
+            const slide = (p, clone) => `
+                <a class="slide" href="#productos" data-id="${p.id}" ${clone ? 'aria-hidden="true" tabindex="-1"' : ""}>
+                    <div class="slide-media">
+                        <img src="${p.image}" alt="${clone ? "" : p.alt}" width="768" height="1024" loading="lazy" decoding="async"${p.focus ? ` style="object-position:${p.focus}"` : ""}>
+                    </div>
+                    <div class="slide-body">
+                        <span class="slide-name">${p.name}</span>
+                        <span class="slide-meta">
+                            <span class="slide-price">${formatMoney(p.price)}</span>
+                            <span class="slide-cta">Elegir aroma${icon("i-arrow")}</span>
+                        </span>
+                    </div>
+                </a>`;
+            const withPhoto = products.filter((p) => p.image);
+            // Tres tandas: la del medio es la real, las otras permiten el loop sin corte
+            track.innerHTML = [true, false, true].map((clone) => withPhoto.map((p) => slide(p, clone)).join("")).join("");
+
+            const setWidth = () => track.scrollWidth / 3;
+            track.scrollLeft = setWidth();
+
+            let paused = false;
+            let resumeTimer;
+            const pause = () => { paused = true; clearTimeout(resumeTimer); };
+            const resume = (delay = 0) => { clearTimeout(resumeTimer); resumeTimer = setTimeout(() => { paused = false; }, delay); };
+
+            // Mantener la posición dentro de la tanda del medio
+            const wrap = () => {
+                const w = setWidth();
+                if (track.scrollLeft < w * 0.5) track.scrollLeft += w;
+                else if (track.scrollLeft > w * 1.5) track.scrollLeft -= w;
+            };
+            track.addEventListener("scroll", wrap, { passive: true });
+
+            let pos = track.scrollLeft;
+            let last = performance.now();
+            const tick = (now) => {
+                const dt = Math.min(now - last, 50);
+                last = now;
+                if (!paused && !reduceMotion.matches && !document.hidden) {
+                    if (Math.abs(track.scrollLeft - pos) > 2) pos = track.scrollLeft; // el usuario lo movió
+                    pos += dt * 0.03; // ~30 px por segundo
+                    track.scrollLeft = pos;
+                    pos = track.scrollLeft; // por si wrap() lo reubicó
+                }
+                requestAnimationFrame(tick);
+            };
+            requestAnimationFrame(tick);
+
+            track.addEventListener("mouseenter", pause);
+            track.addEventListener("mouseleave", () => resume(0));
+            track.addEventListener("focusin", pause);
+            track.addEventListener("focusout", () => resume(0));
+            track.addEventListener("pointerdown", pause);
+            track.addEventListener("touchend", () => resume(2500), { passive: true });
+
+            const step = (dir) => {
+                pause();
+                const by = track.querySelector(".slide").offsetWidth + 20;
+                track.scrollBy({ left: dir * by, behavior: reduceMotion.matches ? "auto" : "smooth" });
+                resume(3000);
+            };
+            $("#carPrev").addEventListener("click", () => step(-1));
+            $("#carNext").addEventListener("click", () => step(1));
+
+            track.addEventListener("click", (e) => {
+                const a = e.target.closest(".slide");
+                if (!a) return;
+                e.preventDefault();
+                goToProduct(Number(a.dataset.id));
+            });
+        };
+
         /* ─── Inicio ─────────────────────────────────────────────────── */
         $("#year").textContent = new Date().getFullYear();
         $("#contactWa").href = waLink("¡Hola! Tengo una consulta sobre los productos de Mili Aromas.");
@@ -1361,6 +1498,7 @@
         }
 
         renderProducts();
+        initCarousel();
         initCustomer();
         renderCart();
     </script>
