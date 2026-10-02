@@ -708,6 +708,8 @@
             text-underline-offset: 3px;
         }
         .link-btn:hover { color: var(--danger); }
+        a.link-btn { display: inline-flex; align-items: center; }
+        a.link-btn:hover { color: var(--ink); }
         .link-btn[hidden] { display: none; }
 
         /* Tablet y escritorio */
@@ -893,6 +895,7 @@
         <footer class="site-footer">
             <div class="container footer-row">
                 <p>© <span id="year">2026</span> Mili Aromas. Todos los derechos reservados.</p>
+                <p><a class="credit" href="privacidad.html">Privacidad</a> · <a class="credit" id="regretLink" href="https://wa.me/5491158857547" target="_blank" rel="noopener">Botón de arrepentimiento</a></p>
                 <p>Hecho por <a class="credit" href="https://santivi03.github.io/SantiVi-asDev/" target="_blank" rel="noopener">Santi Viñas</a></p>
             </div>
         </footer>
@@ -968,6 +971,7 @@
                 <p class="foot-note" id="footNote">Se abre WhatsApp con tu pedido escrito. Lo enviás y ahí te confirmamos disponibilidad, entrega y pago.</p>
                 <div class="foot-links">
                     <button type="button" class="link-btn" id="clearBtn">Vaciar pedido</button>
+                    <a class="link-btn" href="privacidad.html" target="_blank" rel="noopener">Cómo usamos tus datos</a>
                 </div>
             </div>
         </form>
@@ -1500,6 +1504,7 @@
         $("#year").textContent = new Date().getFullYear();
         $("#contactWa").href = waLink("¡Hola! Tengo una consulta sobre los productos de Mili Aromas.");
         $("#contactIg").href = `https://instagram.com/${CONFIG.instagram}`;
+        $("#regretLink").href = waLink("Hola, quiero revocar mi compra (botón de arrepentimiento). Mi nombre es: ");
 
         if (CONFIG.entregas.length || CONFIG.pagos.length) {
             const info = $("#storeInfo");
